@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <link rel="shortcut icon" href="{% static '/img/sumi.png' %}">
+  <script src="https://kit.fontawesome.com/b820fb647e.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static '/gordita/style.css' %}">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static '/main.css' %}">
+  <title>SUMI Travel Limited - Contact Us</title>
+  <meta name="description" content="You can send us a message right here on our website or at info@sumitravelltd.mw">
+</head>
+
+
+<body>
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand nav-b" href="/">
+        <a class="navbar-brand nav-b" href="/">
+      <img src="{% static 'img/logo.png' %}" width="270px" id="logo" height="60px" alt="">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+    <div class="collapse navbar-collapse ms-auto justify-content-center " id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home </a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="/gallery">Gallery</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="/contact" style="color:blue;">Contact Us</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="/book">Book Now</a>
+      </li>
+      </ul>
+      <div class="navbar-brand">
+        <p><span class="fa fa-envelope" aria-hidden="true"></span>info@sumitravelltd.com</p>
+      </div>
+
+    </div>
+  </nav>
+
+  <div class="contact-header">
+    <h1 class="cont-header">Contact Us</h1>
+</div>
+  <div class="row" style="justify-content: center; margin-bottom: 100px;">
+    <div class="col-lg-10">
+      <div class="row abt">
+        <div class="col-md-4">
+            <div class="info-wrap">
+              <h3>Let's get in touch</h3>
+              <p class="mb-4">You can send us a message.</p>
+              
+              <i class="fa fa-contact fa-envelope" aria-hidden="true"></i>
+              <p>P.O. Box 1154
+                <br>Lilongwe,
+                <br>Malawi
+              </p>
+              <i class="fa fa-contact fa-phone" aria-hidden="true"></i>
+              <p>+265 202 303 004 / +265 991660 669 <br>+265 888 785 595</p>
+              <i class="fa fa-contact fa-envelope" aria-hidden="true"></i>
+              <p>info@sumitravelltd.com</p>
+              
+          </div>
+          
+        </div>
+        <div class="col-md-8">
+          <form method="POST" id="contactForm" name="contactForm" class="contactForm novalidate was-validated">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="name">Full Name</label>
+                  <input id="name" class="form-control" type="text" name="name" placeholder="Enter Full Name" value= '{% if submitbutton == "Submit" %} {{ name }} {% endif %}' required>
+                  <div class="valid-feedback">
+                    Looks Good
+                  </div>
+                  <div class="invalid-feedback">
+                        Please Enter your Full Name
+                  </div>
+              </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                      placeholder="Enter email" name="email" value= '{% if submitbutton == "Submit" %} {{ email }} {% endif %}' required>
+                      <div class="valid-feedback">
+                        Looks Good
+                      </div>
+                      <div class="invalid-feedback">
+                        Please Enter a valid Email Address
+                      </div>
+              </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="label" for="subject">Subject</label>
+                  <input type="text" class="form-control" name="subject" value= '{% if submitbutton == "Submit" %} {{ subject }} {% endif %}' id="subject" placeholder="Subject" required>
+                  <div class="valid-feedback">
+                    Looks Good
+                  </div>
+                  <div class="invalid-feedback">
+                        Please Enter a Subject
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="label" for="#">Message</label>
+                  <textarea name="message" class="form-control" value= '{% if submitbutton == "Submit" %} {{ message }} {% endif %}' id="message" cols="30" rows="4"
+                    placeholder="Message" required></textarea>
+                    <div class="valid-feedback">
+                      Looks Good
+                    </div>
+                    <div class="invalid-feedback">
+                        Please Enter a Message
+                    </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <button type="submit" style="margin-top:20px;" value="Submit" class="btn btn-primary" >Submit</button>
+                  <div class="submitting"></div>
+                </div>
+              </div>
+            </div>
+          </form>           
+        </div>
+       
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <div class="footer">
+    <footer class="footer-area section-gap">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 col-md-6 col-sm-6">
+            <div class="single-footer-widget">
+              <h6>About Us</h6>
+              <p>
+                Sumi Travel is a top travel agency in Malawi which offers exclusive tours, highly-trained staff, and
+                quality services to individuals and businesses.
+              </p>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              <p class="footer-text">Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script> Sumi Travel Limited All rights reserved
+              </p>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="single-footer-widget">
+              <ul class="footer-ul">
+                <li><a class="footer-li" href="/">Home</a></li>
+                <li><a class="footer-li" href="/about">About Us</a></li>
+                <li><a class="footer-li" href="/contact">Contact Us</a></li>
+                <li><a class="footer-li" href="/gallery">Gallery</a></li>
+              </ul>
+              </div>
+              <h6></h6>
+            </div>
+          
+          <div class="col-lg-4 col-md-6 col-sm-6 social-widget">
+            <div class="single-footer-widget">
+              <h6>Contact Us</h6>
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+              <p>P.O. Box 1154
+                <br>Lilongwe,
+                <br>Malawi
+              </p>
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <p>+265 202 303 004 / +265 991660 669 <br>+265 888 785 595</p>
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+              <p>info@sumitravelltd.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

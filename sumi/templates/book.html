@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static '/img/sumi.png' %}">
+    <script src="https://kit.fontawesome.com/b820fb647e.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static '/gordita/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static '/main.css' %}">
+        <title>SUMI Travel Limited - Book Now</title>
+</head>
+
+    <style>
+
+        form{
+            padding: 40px;
+            padding-top:0px;
+        }
+        .form-group{
+            padding: 5px;
+        }
+        .submit{
+            margin-top: 5px;
+            width: 200px;
+        }
+        .message{
+            height: 200px;
+        }
+        h1{
+            text-align: center;
+            font-size: 30px;
+            margin-top: 20px;
+        }
+    </style>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <a class="navbar-brand nav-b" href="/">
+            <img src="{% static 'img/logo.png' %}" width="270px" id="logo" height="60px" alt="">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+        <div class="collapse navbar-collapse ms-auto justify-content-center " id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/gallery">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/book" style="color:blue;">Book Now</a>
+                </li>
+               
+            </ul>
+            <div class="navbar-brand">
+                <p><span class="fa fa-envelope" aria-hidden="true"></span>info@sumitravelltd.com</p>
+            </div>
+
+        </div>
+    </nav>
+<form method="POST" action="" class="nonvalidate was-validated">
+    {% csrf_token %}
+    {% comment %} {{ form.as_p }} {% endcomment %}
+        <h1>Enter your details below and we will get back to you</h1>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input id="name" class="form-control" type="text" name="name" placeholder="Enter Full Name" value= '{% if submitbutton == "Submit" %} {{ name }} {% endif %}' required>
+                <div class="invalid-feedback">
+                Please Enter Full Name
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="Enter email" name="email" value= '{% if submitbutton == "Submit" %} {{ email }} {% endif %}' required>
+                    <div class="invalid-feedback">
+                Please Enter Valid Email
+                    </div>
+            </div>
+            <div class="form-group">
+                <label for="nationality">Nationality</label>
+                <select class="form-select" aria-label="Default select example" name="country" value= '{% if submitbutton == "Submit" %} {{ country }} {% endif %}' required>
+                    <option selected>Select Country</option>
+                    <option value="3-Afghanistan">Afghanistan</option>
+                    <option value="6-Albania">Albania</option>
+                    <option value="60-Algeria">Algeria</option>
+                    <option value="12-American Samoa">American Samoa</option>
+                    <option value="1-Andorra">Andorra</option>
+                    <option value="9-Angola">Angola</option>
+                    <option value="5-Anguilla">Anguilla</option>
+                    <option value="10-Antarctica">Antarctica</option>
+                    <option value="4-Antigua and Barbuda">Antigua and Barbuda</option>
+                    <option value="11-Argentina">Argentina</option>
+                    <option value="7-Armenia">Armenia</option>
+                    <option value="15-Aruba">Aruba</option>
+                    <option value="14-Australia">Australia</option>
+                    <option value="13-Austria">Austria</option>
+                    <option value="16-Azerbaijan">Azerbaijan</option>
+                    <option value="30-Bahamas">Bahamas</option>
+                    <option value="23-Bahrain">Bahrain</option>
+                    <option value="19-Bangladesh">Bangladesh</option>
+                    <option value="18-Barbados">Barbados</option>
+                    <option value="34-Belarus">Belarus</option>
+                    <option value="20-Belgium">Belgium</option>
+                    <option value="35-Belize">Belize</option>
+                    <option value="25-Benin">Benin</option>
+                    <option value="26-Bermuda">Bermuda</option>
+                    <option value="31-Bhutan">Bhutan</option>
+                    <option value="28-Bolivia">Bolivia</option>
+                    <option value="17-Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                    <option value="33-Botswana">Botswana</option>
+                    <option value="32-Bouvet Island">Bouvet Island</option>
+                    <option value="29-Brazil">Brazil</option>
+                    <option value="102-British Indian Ocean Territory">British Indian Ocean Territory</option>
+                    <option value="27-Brunei Darussalam">Brunei Darussalam</option>
+                    <option value="22-Bulgaria">Bulgaria</option>
+                    <option value="21-Burkina Faso">Burkina Faso</option>
+                    <option value="24-Burundi">Burundi</option>
+                    <option value="112-Cambodia">Cambodia</option>
+                    <option value="45-Cameroon">Cameroon</option>
+                    <option value="36-Canada">Canada</option>
+                    <option value="51-Cape Verde">Cape Verde</option>
+                    <option value="119-Cayman Islands">Cayman Islands</option>
+                    <option value="39-Central African Republic">Central African Republic</option>
+                    <option value="205-Chad">Chad</option>
+                    <option value="44-Chile">Chile</option>
+                    <option value="46-China">China</option>
+                    <option value="52-Christmas Island">Christmas Island</option>
+                    <option value="37-Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
+                    <option value="47-Colombia">Colombia</option>
+                    <option value="114-Comoros">Comoros</option>
+                    <option value="40-Congo">Congo</option>
+                    <option value="38-Congo, the Democratic Republic of the">Congo, the Democratic Republic of the</option>
+                    <option value="43-Cook Islands">Cook Islands</option>
+                    <option value="48-Costa Rica">Costa Rica</option>
+                    <option value="42-Cote D'Ivoire">Cote D'Ivoire</option>
+                    <option value="95-Croatia">Croatia</option>
+                    <option value="50-Cuba">Cuba</option>
+                    <option value="53-Cyprus">Cyprus</option>
+                    <option value="54-Czech Republic">Czech Republic</option>
+                    <option value="57-Denmark">Denmark</option>
+                    <option value="56-Djibouti">Djibouti</option>
+                    <option value="58-Dominica">Dominica</option>
+                    <option value="59-Dominican Republic">Dominican Republic</option>
+                    <option value="61-Ecuador">Ecuador</option>
+                    <option value="63-Egypt">Egypt</option>
+                    <option value="201-El Salvador">El Salvador</option>
+                    <option value="85-Equatorial Guinea">Equatorial Guinea</option>
+                    <option value="65-Eritrea">Eritrea</option>
+                    <option value="62-Estonia">Estonia</option>
+                    <option value="67-Ethiopia">Ethiopia</option>
+                    <option value="70-Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option>
+                    <option value="72-Faroe Islands">Faroe Islands</option>
+                    <option value="69-Fiji">Fiji</option>
+                    <option value="68-Finland">Finland</option>
+                    <option value="73-France">France</option>
+                    <option value="78-French Guiana">French Guiana</option>
+                    <option value="168-French Polynesia">French Polynesia</option>
+                    <option value="206-French Southern Territories">French Southern Territories</option>
+                    <option value="74-Gabon">Gabon</option>
+                    <option value="82-Gambia">Gambia</option>
+                    <option value="77-Georgia">Georgia</option>
+                    <option value="55-Germany">Germany</option>
+                    <option value="79-Ghana">Ghana</option>
+                    <option value="80-Gibraltar">Gibraltar</option>
+                    <option value="86-Greece">Greece</option>
+                    <option value="81-Greenland">Greenland</option>
+                    <option value="76-Grenada">Grenada</option>
+                    <option value="84-Guadeloupe">Guadeloupe</option>
+                    <option value="89-Guam">Guam</option>
+                    <option value="88-Guatemala">Guatemala</option>
+                    <option value="83-Guinea">Guinea</option>
+                    <option value="90-Guinea-Bissau">Guinea-Bissau</option>
+                    <option value="91-Guyana">Guyana</option>
+                    <option value="96-Haiti">Haiti</option>
+                    <option value="93-Heard Island and Mcdonald Islands">Heard Island and Mcdonald Islands</option>
+                    <option value="226-Holy See (Vatican City State)">Holy See (Vatican City State)</option>
+                    <option value="94-Honduras">Honduras</option>
+                    <option value="92-Hong Kong">Hong Kong</option>
+                    <option value="97-Hungary">Hungary</option>
+                    <option value="105-Iceland">Iceland</option>
+                    <option value="101-India">India</option>
+                    <option value="98-Indonesia">Indonesia</option>
+                    <option value="104-Iran, Islamic Republic of">Iran, Islamic Republic of</option>
+                    <option value="103-Iraq">Iraq</option>
+                    <option value="99-Ireland">Ireland</option>
+                    <option value="100-Israel">Israel</option>
+                    <option value="106-Italy">Italy</option>
+                    <option value="107-Jamaica">Jamaica</option>
+                    <option value="109-Japan">Japan</option>
+                    <option value="108-Jordan">Jordan</option>
+                    <option value="120-Kazakhstan">Kazakhstan</option>
+                    <option value="110-Kenya">Kenya</option>
+                    <option value="113-Kiribati">Kiribati</option>
+                    <option value="247-Kosovo">Kosovo</option>
+                    <option value="118-Kuwait">Kuwait</option>
+                    <option value="111-Kyrgyzstan">Kyrgyzstan</option>
+                    <option value="121-Lao People's Democratic Republic">Lao People's Democratic Republic</option>
+                    <option value="130-Latvia">Latvia</option>
+                    <option value="122-Lebanon">Lebanon</option>
+                    <option value="127-Lesotho">Lesotho</option>
+                    <option value="126-Liberia">Liberia</option>
+                    <option value="242-Libya">Libya</option>
+                    <option value="131-Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
+                    <option value="124-Liechtenstein">Liechtenstein</option>
+                    <option value="128-Lithuania">Lithuania</option>
+                    <option value="129-Luxembourg">Luxembourg</option>
+                    <option value="141-Macao">Macao</option>
+                    <option value="137-Macedonia">Macedonia</option>
+                    <option value="135-Madagascar">Madagascar</option>
+                    <option value="149-Malawi">Malawi</option>
+                    <option value="151-Malaysia">Malaysia</option>
+                    <option value="148-Maldives">Maldives</option>
+                    <option value="138-Mali">Mali</option>
+                    <option value="146-Malta">Malta</option>
+                    <option value="136-Marshall Islands">Marshall Islands</option>
+                    <option value="143-Martinique">Martinique</option>
+                    <option value="144-Mauritania">Mauritania</option>
+                    <option value="147-Mauritius">Mauritius</option>
+                    <option value="236-Mayotte">Mayotte</option>
+                    <option value="150-Mexico">Mexico</option>
+                    <option value="71-Micronesia, Federated States of">Micronesia, Federated States of</option>
+                    <option value="134-Moldova">Moldova</option>
+                    <option value="133-Monaco">Monaco</option>
+                    <option value="140-Mongolia">Mongolia</option>
+                    <option value="244-Montenegro">Montenegro</option>
+                    <option value="145-Montserrat">Montserrat</option>
+                    <option value="132-Morocco">Morocco</option>
+                    <option value="152-Mozambique">Mozambique</option>
+                    <option value="139-Myanmar">Myanmar</option>
+                    <option value="153-Namibia">Namibia</option>
+                    <option value="162-Nauru">Nauru</option>
+                    <option value="161-Nepal">Nepal</option>
+                    <option value="159-Netherlands">Netherlands</option>
+                    <option value="8-Netherlands Antilles">Netherlands Antilles</option>
+                    <option value="154-New Caledonia">New Caledonia</option>
+                    <option value="164-New Zealand">New Zealand</option>
+                    <option value="158-Nicaragua">Nicaragua</option>
+                    <option value="155-Niger">Niger</option>
+                    <option value="157-Nigeria">Nigeria</option>
+                    <option value="163-Niue">Niue</option>
+                    <option value="156-Norfolk Island">Norfolk Island</option>
+                    <option value="241-North Korea">North Korea</option>
+                    <option value="246-North Sudan">North Sudan</option>
+                    <option value="142-Northern Mariana Islands">Northern Mariana Islands</option>
+                    <option value="160-Norway">Norway</option>
+                    <option value="165-Oman">Oman</option>
+                    <option value="171-Pakistan">Pakistan</option>
+                    <option value="178-Palau">Palau</option>
+                    <option value="176-Palestinian Territory, Occupied">Palestinian Territory, Occupied</option>
+                    <option value="166-Panama">Panama</option>
+                    <option value="169-Papua New Guinea">Papua New Guinea</option>
+                    <option value="179-Paraguay">Paraguay</option>
+                    <option value="167-Peru">Peru</option>
+                    <option value="170-Philippines">Philippines</option>
+                    <option value="174-Pitcairn">Pitcairn</option>
+                    <option value="172-Poland">Poland</option>
+                    <option value="177-Portugal">Portugal</option>
+                    <option value="175-Puerto Rico">Puerto Rico</option>
+                    <option value="180-Qatar">Qatar</option>
+                    <option value="181-Reunion">Reunion</option>
+                    <option value="182-Romania">Romania</option>
+                    <option value="183-Russian Federation">Russian Federation</option>
+                    <option value="184-Rwanda">Rwanda</option>
+                    <option value="191-Saint Helena">Saint Helena</option>
+                    <option value="115-Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                    <option value="123-Saint Lucia">Saint Lucia</option>
+                    <option value="173-Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
+                    <option value="227-Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+                    <option value="234-Samoa">Samoa</option>
+                    <option value="196-San Marino">San Marino</option>
+                    <option value="200-Sao Tome and Principe">Sao Tome and Principe</option>
+                    <option value="185-Saudi Arabia">Saudi Arabia</option>
+                    <option value="197-Senegal">Senegal</option>
+                    <option value="49-Serbia">Serbia</option>
+                    <option value="187-Seychelles">Seychelles</option>
+                    <option value="195-Sierra Leone">Sierra Leone</option>
+                    <option value="190-Singapore">Singapore</option>
+                    <option value="194-Slovakia">Slovakia</option>
+                    <option value="192-Slovenia">Slovenia</option>
+                    <option value="186-Solomon Islands">Solomon Islands</option>
+                    <option value="198-Somalia">Somalia</option>
+                    <option value="237-South Africa">South Africa</option>
+                    <option value="87-South Georgia and the South Sandwich Islands">South Georgia and the South Sandwich Islands
+                    </option>
+                    <option value="117-South Korea">South Korea</option>
+                    <option value="188-South Sudan">South Sudan</option>
+                    <option value="66-Spain">Spain</option>
+                    <option value="125-Sri Lanka">Sri Lanka</option>
+                    <option value="199-Suriname">Suriname</option>
+                    <option value="193-Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
+                    <option value="203-Swaziland">Swaziland</option>
+                    <option value="189-Sweden">Sweden</option>
+                    <option value="41-Switzerland">Switzerland</option>
+                    <option value="202-Syrian Arab Republic">Syrian Arab Republic</option>
+                    <option value="218-Taiwan">Taiwan</option>
+                    <option value="209-Tajikistan">Tajikistan</option>
+                    <option value="219-Tanzania, United Republic of">Tanzania, United Republic of</option>
+                    <option value="208-Thailand">Thailand</option>
+                    <option value="243-Tibet">Tibet</option>
+                    <option value="211-Timor-Leste">Timor-Leste</option>
+                    <option value="207-Togo">Togo</option>
+                    <option value="210-Tokelau">Tokelau</option>
+                    <option value="214-Tonga">Tonga</option>
+                    <option value="216-Trinidad and Tobago">Trinidad and Tobago</option>
+                    <option value="213-Tunisia">Tunisia</option>
+                    <option value="215-Turkey">Turkey</option>
+                    <option value="212-Turkmenistan">Turkmenistan</option>
+                    <option value="204-Turks and Caicos Islands">Turks and Caicos Islands</option>
+                    <option value="217-Tuvalu">Tuvalu</option>
+                    <option value="221-Uganda">Uganda</option>
+                    <option value="220-Ukraine">Ukraine</option>
+                    <option value="2-United Arab Emirates">United Arab Emirates</option>
+                    <option value="75-United Kingdom">United Kingdom</option>
+                    <option value="223-United States">United States</option>
+                    <option value="222-United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+                    <option value="224-Uruguay">Uruguay</option>
+                    <option value="225-Uzbekistan">Uzbekistan</option>
+                    <option value="232-Vanuatu">Vanuatu</option>
+                    <option value="228-Venezuela">Venezuela</option>
+                    <option value="231-Viet Nam">Viet Nam</option>
+                    <option value="229-Virgin Islands, British">Virgin Islands, British</option>
+                    <option value="240-Virgin Islands,US">Virgin Islands,US</option>
+                    <option value="233-Wallis and Futuna">Wallis and Futuna</option>
+                    <option value="64-Western Sahara">Western Sahara</option>
+                    <option value="235-Yemen">Yemen</option>
+                    <option value="238-Zambia">Zambia</option>
+                    <option value="245-Zanzibar">Zanzibar</option>
+                    <option value="239-Zimbabwe">Zimbabwe</option>
+                    <option value="">Others</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="phone">Telephone</label>
+                <input id="phone" class="form-control" type="tel" name="phone" placeholder="Enter Phone Number" value= '{% if submitbutton == "Submit" %} {{ phone }} {% endif %}' required>
+                Please Enter Phone Number
+            </div>
+            <div class="form-group">
+                <label for="start">Start Location</label>
+                <input type="text" class="form-control" name="start" placeholder="Enter Start Country and City e.g Blantyre, Malawi" value= '{% if submitbutton == "Submit" %} {{ start }} {% endif %}' required>
+                <div class="invalid-feedback">
+                Please Enter Start Location 
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="destination">Destination</label>
+                <input type="text" class="form-control" name="destination" placeholder="Enter Destination Country and City e.g Blantyre, Malawi" value= '{% if submitbutton == "Submit" %} {{ destination }} {% endif %}' required>
+                <div class="invalid-feedback">
+                Please Enter Destination
+                </div>
+            </div>
+            <div class="form-group">
+                <p>Travel Dates: </p>
+                <label for="startdate">Start Date</label>
+                <input id="startdate" class="form-control" type="date" name="startdate" value= '{% if submitbutton == "Submit" %} {{ startdate }} {% endif %}'> 
+                <div class="invalid-feedback">
+                
+                </div>
+            </div>
+            <div class="form-group">   
+                <label for="enddate">End Date</label>
+                <input id="enddate" class="form-control" type="date" name="enddate" value= '{% if submitbutton == "Submit" %} {{ enddate }} {% endif %}'>
+            </div>
+            <div class="form-group">
+                <label for="number">Number of People</label>
+                <input id="number" class="form-control" type="text" name="number"
+                    placeholder="Enter Number of people Travelling" value= '{% if submitbutton == "Submit" %} {{ number }} {% endif %}'>
+            </div>
+            <div class="form-group">
+                <label for="request">Customer Request</label>
+                <textarea id="request" class="form-control message" name="request"
+                    placeholder="Enter Special Request and additional details here." value= '{% if submitbutton == "Submit" %} {{ request }} {% endif %}'></textarea>
+            </div> 
+   
+          
+    <button type="Submit" name="Submit" value="Submit" class="btn submit btn-primary">Submit</button>
+</form>
+   {% comment %} {% if submitbutton == "Submit"  %} 
+            <h1> Your first name is {{ name}}</h1>
+            {{email}}
+            {{startdate}}
+            {{enddate}}
+            {{phone}}
+            {{number}}
+            {{customerrequest}}
+            {% endif %} {% endcomment %}
+
+            <div class="footer">
+                <footer class="footer-area section-gap">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-lg-5 col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                          <h6>About Us</h6>
+                          <p>
+                            Sumi Travel is a top travel agency in Malawi which offers exclusive tours, highly-trained staff, and
+                            quality services to individuals and businesses.
+                          </p>
+                          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                          <p class="footer-text">Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> Sumi Travel Limited All rights reserved
+                          </p>
+                          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </div>
+                      </div>
+                      <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                          <ul class="footer-ul">
+                            <li><a class="footer-li" href="/">Home</a></li>
+                            <li><a class="footer-li" href="/about">About Us</a></li>
+                            <li><a class="footer-li" href="/contact">Contact Us</a></li>
+                            <li><a class="footer-li" href="/gallery">Gallery</a></li>
+                          </ul>
+                          </div>
+                          <h6></h6>
+                        </div>
+                      
+                      <div class="col-lg-4 col-md-6 col-sm-6 social-widget">
+                        <div class="single-footer-widget">
+                          <h6>Contact Us</h6>
+                          <i class="fa fa-envelope" aria-hidden="true"></i>
+                          <p>P.O. Box 1154
+                            <br>Lilongwe,
+                            <br>Malawi
+                          </p>
+                          <i class="fa fa-phone" aria-hidden="true"></i>
+                          <p>+265 202 303 004 / +265 991660 669 <br>+265 888 785 595</p>
+                          <i class="fa fa-envelope" aria-hidden="true"></i>
+                          <p>info@sumitravelltd.com</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </footer>
+              </div>
+        <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+            
+    </body>
+    
+    </html>
